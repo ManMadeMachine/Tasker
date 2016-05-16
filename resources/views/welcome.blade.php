@@ -8,7 +8,9 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    Welcome to Tasker! It's the easy-to-use, modern web application for task, time and resource management.
+
+                    Log in or sign up to start managing your life right away.
                 </div>
             </div>
         </div>

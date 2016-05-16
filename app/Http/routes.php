@@ -20,7 +20,13 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 //Profile controller routes
-Route::get('/profile', [
-    'middleware' => 'auth',
-    'uses' => 'ProfileController@index'
-]);
+
+Route::get('/profile', 'UserController@show');
+Route::get('/profile/edit', 'UserController@edit');
+
+//Tasks controller routes
+//TODO: Should this be a resource..?
+Route::get('/tasks', 'TaskController@index');
+Route::get('/tasks/new', function(){
+    return view('tasks.new');
+});
