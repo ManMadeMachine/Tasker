@@ -10,15 +10,19 @@
                     @if (count($tasks) == 0)
                         <p>You have no added tasks. Add tasks by clicking the "Add task" button below</p>
                     @else
-                        <p>You have {{ count($tasks) }} added tasks. View them by clicking on the task.</p>
+                        <div class="list-group">
+                            @foreach ($tasks as $task)
+                                <a href="{{ url('/tasks', $task->id) }}" class="list-group-item">{{ $task->name }}</a>
+                            @endforeach
+                        </div>
                     @endif
                 </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    Body
-                </div>
-            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+            <a href="{{ url('/tasks/create') }}" class="btn btn-primary" role="button">Add task</a>
         </div>
     </div>
 </div>

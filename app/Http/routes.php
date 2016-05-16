@@ -26,7 +26,7 @@ Route::get('/profile/edit', 'UserController@edit');
 
 //Tasks controller routes
 //TODO: Should this be a resource..?
-Route::get('/tasks', 'TaskController@index');
-Route::get('/tasks/new', function(){
-    return view('tasks.new');
-});
+Route::resource('tasks', 'TaskController');
+
+/*Route::get('/tasks', 'TaskController@index');
+Ruute::get('/tasks/create', 'TaskController@create');*/

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -10,6 +11,10 @@ use App\Http\Requests;
 
 class TaskController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +36,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //TODO:??
+        return view('tasks.create');
     }
 
     /**
@@ -42,7 +47,20 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new Task();
+
+        $task->name = $request->name;
+        $task->deadline = $request->deadline;
+        $task->description = $request->description;
+
+        $task->user_id = Auth::user()->id;
+
+        $task->save();
+
+        $tasks = Task::all();
+        $tasks->toArray();
+
+        return view('tasks.list', ['tasks' => $tasks]);
     }
 
     /**
@@ -53,7 +71,9 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $task = Task::find($id);
+
+        return view('tasks.show', ['task' => $task]);
     }
 
     /**
