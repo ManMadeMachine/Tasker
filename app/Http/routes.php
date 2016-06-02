@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index');
 
 //Profile controller routes
 
-Route::get('/profile', 'UserController@show');
+Route::get('/profile', 'UserController@index');
 Route::get('/profile/edit', 'UserController@edit');
 
 //Tasks controller routes

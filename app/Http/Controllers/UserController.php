@@ -18,20 +18,19 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('profile');
+        $user = Auth::user();
+        return view('profile.index', ['user' => $user]);
     }
 
     public function show()
     {
-        //
-        return view('profile');
     }
 
     //TODO: Tarviiko id:tä, vai editoidaanko vaan sisäänkirjautunutta käyttäjää?
     public function edit()
     {
         $user = Auth::user();
-        return view('edit', ['user' => $user]);
+        return view('profile.edit', ['user' => $user]);
     }
 
     public function update($id)
