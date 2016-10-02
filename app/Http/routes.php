@@ -23,9 +23,9 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/profile', 'UserController@index');
 Route::get('/profile/edit', 'UserController@edit');
+Route::post('/fileupload', 'UserController@fileUpload');
 
 //Tasks controller routes
-//TODO: Should this be a resource..?
 Route::resource('tasks', 'TaskController');
 
 /*Route::get('/tasks', 'TaskController@index');
